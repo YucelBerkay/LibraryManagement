@@ -1,4 +1,4 @@
-
+ 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -240,12 +240,13 @@ public class ReturnBook extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel8)
-                    .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton3))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jButton3)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel1)
+                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel8)
+                        .addComponent(jTextField8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -288,7 +289,6 @@ public class ReturnBook extends javax.swing.JFrame {
         jLabel15.setFont(new java.awt.Font("Ubuntu", 0, 18)); // NOI18N
         jLabel15.setText("Return Date");
 
-        jButton1.setIcon(new javax.swing.ImageIcon("/home/berkaypc/NetBeansProjects/Library_Management_System/images/returnBook.png")); // NOI18N
         jButton1.setText("Return");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -356,7 +356,7 @@ public class ReturnBook extends javax.swing.JFrame {
             rs = pst.executeQuery();
             if (rs.next()){
               // Get the student name from database
-              String stu_name = rs.getString("Name");
+              String stu_name = rs.getString("Student_Name");
               // Then set the student name to TextFiled2
               jTextField2.setText(stu_name);
               // Get the student last name from database
@@ -384,7 +384,7 @@ public class ReturnBook extends javax.swing.JFrame {
               // Then set the book id to TextFiled8
               jTextField8.setText(book_id);
               // Get the book name from database
-              String book_name = rs.getString("BName");
+              String book_name = rs.getString("Name");
               // Then set the book name to TextFiled9
               jTextField9.setText(book_name);
               // Get the edition from database

@@ -26,29 +26,32 @@ public class Statistics extends javax.swing.JFrame {
         super("Statistics");
         initComponents();
         conn = javaConnect.ConnectrDb();
+        // Adding Return Book Table
         jTable1();
+        // Adding Issue Book Table
         jTable2();
+        
     }
 
-    // Fetch datas to Table1(IssueBook)
-    public void jTable1(){
+    // Fetch datas to Table2(IssueBook)
+    public void jTable2(){
         try{
-            String sql = "select Book_ID, Name, Edition, Publisher, Price, Pages from Issue";
+            String sql = "select Book_ID, Name, Price, Student_ID, Student_Name, Date_of_issue from Issue";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
-            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
+            jTable2.setModel(DbUtils.resultSetToTableModel(rs));
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
     }
     
-    // Fetch datas to Table2(ReturnBook)
-    public void jTable2(){
+    // Fetch datas to Table1(ReturnBook)
+    public void jTable1(){
         try{
-            String sql = "select Student_ID, Name, Last_Name, Course, Branch, Year from Return";
+            String sql = "select Student_ID, Name, Book_ID, BName, DOI, DOR from Return";
             pst = conn.prepareStatement(sql);
             rs = pst.executeQuery();
-            jTable2.setModel(DbUtils.resultSetToTableModel(rs));
+            jTable1.setModel(DbUtils.resultSetToTableModel(rs));
         } catch(Exception e){
             JOptionPane.showMessageDialog(null, e);
         }
@@ -68,6 +71,7 @@ public class Statistics extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -135,15 +139,28 @@ public class Statistics extends javax.swing.JFrame {
                 .addContainerGap(35, Short.MAX_VALUE))
         );
 
+        jButton1.setIcon(new javax.swing.ImageIcon("/home/berkaypc/NetBeansProjects/Library_Management_System/images/back.png")); // NOI18N
+        jButton1.setText("Back");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(25, 25, 25)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(443, 443, 443)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(23, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
@@ -153,12 +170,22 @@ public class Statistics extends javax.swing.JFrame {
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(39, 39, 39)
                 .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(42, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jButton1)
+                .addContainerGap(34, Short.MAX_VALUE))
         );
 
-        setSize(new java.awt.Dimension(1020, 504));
+        setSize(new java.awt.Dimension(1020, 536));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    
+    // Back Button Action Handler
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        setVisible(false);
+        Home ob = new Home();
+        ob.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,6 +223,7 @@ public class Statistics extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButton1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;

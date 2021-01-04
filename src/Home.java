@@ -244,6 +244,11 @@ public class Home extends javax.swing.JFrame {
         jMenu2.setText("Edit");
 
         jMenuItem3.setText("About");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem3);
 
         jMenuBar1.add(jMenu2);
@@ -352,6 +357,14 @@ public class Home extends javax.swing.JFrame {
         About ob = new About();
         ob.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    
+    // MenuItem AboutButton Action Handler
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        setVisible(false);
+        About ob = new About();
+        ob.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
