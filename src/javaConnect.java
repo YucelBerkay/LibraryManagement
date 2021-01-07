@@ -18,6 +18,7 @@ public class javaConnect {
         try {
             // Fix the connection error
             Class.forName("org.sqlite.JDBC");
+            // Edit Database path!!!
             Connection conn = DriverManager.getConnection("jdbc:sqlite:"
                     + "/home/berkaypc/NetBeansProjects/LibraryManagement/LibraryDatabase");
             return conn;
